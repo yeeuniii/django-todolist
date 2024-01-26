@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div>
+    <header>
+    <h2>To-Do List</h2>
+    <form action="{% url 'todolist:index' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="todo_input" placeholder="오늘 할 일은?"
+                style="width: 20rem">
+        <button type="submit" class="btn btn-outline-light"
+                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem;">추가</button>
+    </form>
+<!--    <span onclick="newElement()" class="addBtn">Add</span>-->
+    </header>
+</div>
+
+<ul>
+    <div>
+        {% for todo in todos %}
+        <div style="text-align: center; margin: .5rem">
+            {{ todo }}
+        </div>
+
+        {% endfor %}
+    </div>
+
+</ul>
+
+
+{% endblock %}
